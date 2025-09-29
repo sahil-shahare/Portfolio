@@ -6,7 +6,7 @@
     <title>Sahil Shahare | CSE Student Portfolio</title>
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -14,24 +14,32 @@
       href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
 
     <style>
-      /* CSS Variables for Dark/Light Mode - Teal & Gray Theme */
+      /* CSS Variables for Dark/Light Mode - Indigo & Amber Theme */
       :root {
-        --bg-color: #f0f4f8;
-        --text-color: #334e68;
-        --primary-color: #00796b;
-        --secondary-color: #4db6ac;
+        --bg-color: #f5f7fa;
+        --text-color: #37474f;
+        --primary-color: #3f51b5;
+        --secondary-color: #ffc107;
         --card-bg: #ffffff;
-        --header-bg: #004d40;
-        --nav-bg: #00796b;
+        --header-bg: linear-gradient(135deg, #1a237e, #3f51b5);
+        --nav-bg: #303f9f;
+        --dark-text: #263238;
       }
       body.dark {
-        --bg-color: #1a202c;
-        --text-color: #e2e8f0;
-        --card-bg: #2d3748;
-        --header-bg: #004d40;
-        --nav-bg: #00695c;
+        --bg-color: #121212;
+        --text-color: #e0e0e0;
+        --card-bg: #1e1e1e;
+        --primary-color: #7986cb;
+        --secondary-color: #ffeb3b;
+        --header-bg: linear-gradient(135deg, #0d47a1, #1a237e);
+        --nav-bg: #283593;
+        --dark-text: #f5f5f5;
       }
 
       /* Base Reset & Typography */
@@ -48,6 +56,12 @@
         scroll-behavior: smooth;
         transition: background 0.3s, color 0.3s;
       }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Montserrat", sans-serif;
+      }
 
       /* Theme Toggle Button */
       #theme-toggle {
@@ -60,8 +74,13 @@
         cursor: pointer;
         z-index: 1001;
         background: var(--secondary-color);
-        color: white;
+        color: var(--dark-text);
         font-weight: 600;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s, background 0.3s;
+      }
+      #theme-toggle:hover {
+        transform: translateY(-2px);
       }
 
       /* Header */
@@ -78,13 +97,15 @@
         height: 100vh;
       }
       header h1 {
-        font-size: 3rem;
-        font-weight: 700;
+        font-size: 3.5rem;
+        font-weight: 800;
         margin-bottom: 1rem;
+        color: var(--secondary-color);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
       }
       header p {
-        font-size: 1.3rem;
-        color: #b2dfdb;
+        font-size: 1.5rem;
+        color: #e8eaf6;
         font-weight: 300;
       }
 
@@ -95,9 +116,8 @@
         position: sticky;
         top: 0;
         z-index: 1000;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       }
-
       .nav-container {
         display: flex;
         justify-content: space-between;
@@ -105,14 +125,13 @@
         max-width: 1200px;
         margin: auto;
       }
-
       .nav-links {
         display: flex;
-        gap: 1rem;
+        gap: 1.5rem;
         flex-direction: row;
         transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
         overflow: hidden;
-        max-height: 1000px; /* large default for desktop */
+        max-height: 1000px;
       }
       .logo {
         font-weight: 700;
@@ -122,25 +141,35 @@
       .nav-links a {
         color: white;
         text-decoration: none;
-        margin: 0 0.5rem;
-        font-weight: 600;
+        font-weight: 500;
         padding: 0.4rem 0.2rem;
         transition: color 0.3s, border-bottom 0.3s;
       }
-
       .nav-links a:hover {
-        color: #80cbc4;
-        border-bottom: 2px solid #80cbc4;
+        color: var(--secondary-color);
+        border-bottom: 2px solid var(--secondary-color);
       }
-
       .hamburger {
         display: none;
         font-size: 2rem;
         cursor: pointer;
         color: white;
         user-select: none;
+        background: none;
+        border: none;
       }
-
+      .resume-btn {
+        background: var(--secondary-color);
+        color: var(--dark-text);
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        font-weight: 600;
+        transition: transform 0.2s, background 0.3s;
+        text-decoration: none;
+      }
+      .resume-btn:hover {
+        transform: translateY(-2px);
+      }
       @media (max-width: 768px) {
         .hamburger {
           display: block;
@@ -157,13 +186,17 @@
           padding: 0;
         }
         .nav-links.show {
-          max-height: 500px; /* adjust if needed */
+          max-height: 500px;
           padding: 1rem 0;
         }
         .nav-links a {
           margin: 0;
           text-align: center;
           border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .nav-links .resume-btn {
+          margin: 0.5rem 0;
+          border-radius: 0;
         }
       }
 
@@ -176,11 +209,24 @@
         margin-bottom: 2.5rem;
         font-size: 2.5rem;
         color: var(--primary-color);
-        font-weight: 600;
-        border-bottom: 3px solid var(--secondary-color);
+        font-weight: 700;
+        position: relative;
         display: inline-block;
         padding-bottom: 0.5rem;
         width: auto;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background-color: var(--secondary-color);
+        border-radius: 2px;
       }
 
       /* Cards */
@@ -188,14 +234,14 @@
         background: var(--card-bg);
         padding: 2rem;
         border-radius: 12px;
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease-in-out, box-shadow 0.3s;
         text-align: left;
         border-top: 5px solid var(--secondary-color);
       }
       .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        transform: translateY(-8px);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
       }
       .card h3 {
         margin-bottom: 0.75rem;
@@ -205,6 +251,36 @@
       .card p {
         color: var(--text-color);
         margin-bottom: 1rem;
+      }
+
+      /* About Section - Two Column */
+      .about-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 1000px;
+        margin: 0 auto;
+        gap: 3rem;
+      }
+      .about-text {
+        text-align: center;
+      }
+      .profile-image {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid rgba(0, 0, 0, 0.492);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      @media (min-width: 768px) {
+        .about-container {
+          flex-direction: row;
+          text-align: left;
+        }
+        .about-text {
+          text-align: left;
+        }
       }
 
       /* Button Styling */
@@ -218,25 +294,44 @@
         text-decoration: none;
         font-weight: 500;
         transition: background 0.3s, transform 0.2s;
+        border: none;
+        margin-right: 0.5rem;
       }
       .btn:hover {
         background: var(--secondary-color);
+        color: var(--dark-text);
         transform: translateY(-2px);
       }
+      .btn-secondary {
+        background: #e0e0e0;
+        color: var(--text-color);
+      }
+      .btn-secondary:hover {
+        background: #bdbdbd;
+      }
+      body.dark .btn-secondary {
+        background: #424242;
+        color: #e0e0e0;
+      }
+      body.dark .btn-secondary:hover {
+        background: #616161;
+      }
 
-      /* Education Section */
+      /* Education & Experience Sections */
       .education-item {
         margin: 0 auto 2rem;
-        max-width: 600px;
+        max-width: 700px;
         padding: 1.5rem;
         border-left: 5px solid var(--secondary-color);
-        background: #e0f2f1;
+        background: var(--card-bg);
         border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
       }
       .education-item h4 {
         font-size: 1.25rem;
         color: var(--primary-color);
         margin-bottom: 0.25rem;
+        font-weight: 600;
       }
       .education-item p {
         color: var(--text-color);
@@ -252,7 +347,14 @@
       }
       body.dark .education-item {
         background: var(--card-bg);
+      }
+      .experience-item ul {
+        list-style-type: disc;
+        margin-left: 1.5rem;
         color: var(--text-color);
+      }
+      .experience-item li {
+        margin-bottom: 0.5rem;
       }
 
       /* Skills Bars */
@@ -261,6 +363,10 @@
         border-radius: 5px;
         height: 10px;
         margin-top: 0.5rem;
+        overflow: hidden;
+      }
+      body.dark .skill-bar {
+        background: #424242;
       }
       .skill-fill {
         background: var(--secondary-color);
@@ -273,27 +379,70 @@
         width: var(--fill-width);
       }
 
-      /* Contact */
-      #contact .contact-info {
-        text-align: center;
-        font-size: 1.1rem;
-        line-height: 2.5;
-      }
-      #contact a {
-        color: var(--secondary-color);
-        text-decoration: none;
+      /* Project Details */
+      .project-details p:first-of-type {
         font-weight: 500;
+        color: var(--dark-text);
+      }
+
+      /* Contact Form & Socials */
+      .contact-content {
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .social-icons a {
+        color: var(--primary-color);
+        font-size: 2rem;
+        margin: 0 1rem;
         transition: color 0.3s;
       }
-      #contact a:hover {
-        color: var(--primary-color);
-        text-decoration: underline;
+      .social-icons a:hover {
+        color: var(--secondary-color);
+      }
+      #contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      #contact-form input,
+      #contact-form textarea {
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background: var(--card-bg);
+        color: var(--text-color);
+        transition: border-color 0.3s;
+      }
+      #contact-form input:focus,
+      #contact-form textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+      }
+      #contact-form textarea {
+        resize: vertical;
+      }
+      #contact-form button {
+        background: var(--primary-color);
+        color: white;
+        padding: 1rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+      }
+      #contact-form button:hover {
+        background: var(--secondary-color);
+        color: var(--dark-text);
+        transform: translateY(-2px);
       }
 
       /* Footer */
       footer {
-        background: var(--header-bg);
-        color: #b2dfdb;
+        background: var(--nav-bg);
+        color: #e8eaf6;
         text-align: center;
         padding: 1.5rem;
       }
@@ -301,10 +450,10 @@
       /* Responsive */
       @media (max-width: 768px) {
         header h1 {
-          font-size: 2.2rem;
+          font-size: 2.5rem;
         }
         header p {
-          font-size: 1rem;
+          font-size: 1.2rem;
         }
         h2 {
           font-size: 2rem;
@@ -316,6 +465,10 @@
         .skills,
         .projects {
           grid-template-columns: 1fr;
+        }
+        .nav-links a {
+          text-align: left;
+          padding: 0.8rem 1.5rem;
         }
       }
 
@@ -341,6 +494,11 @@
         cursor: pointer;
         font-size: 1.2rem;
         z-index: 1001;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s;
+      }
+      #back-to-top:hover {
+        transform: translateY(-2px);
       }
     </style>
   </head>
@@ -355,7 +513,11 @@
     <nav>
       <div class="nav-container">
         <div class="logo">Sahil Shahare</div>
-        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Toggle navigation menu"
+        >
           <span class="hamburger-icon">&#9776;</span>
         </button>
         <div class="nav-links" id="nav-links">
@@ -365,26 +527,47 @@
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
+          <a
+            href="https://drive.google.com/file/d/1TcnpW87nc4CxxENFDrFmEpz1qVtJd3mP/view?usp=drive_link"
+            class="resume-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Download CV</a
+          >
         </div>
       </div>
     </nav>
 
     <section id="about" data-aos="fade-up">
-      <h2 style="margin: 0 auto">About Me</h2>
-      <p style="margin-top: 2.5rem; max-width: 800px; margin: 2.5rem auto 0; text-align: center;">
-        I am a passionate Computer Science and Engineering student at G. H.
-        Raisoni College of Engineering. My core interests lie in
-        <strong>Software Development, Machine Learning, and Full-Stack Web
-          technologies</strong>. I possess strong problem-solving and critical thinking
-        skills, leveraging technologies like <strong>Java, Python, and the MERN
-          stack</strong> to build impactful applications. I am actively seeking
-        opportunities to apply my technical knowledge and collaborative soft
-        skills in a challenging role.
-      </p>
+      <h2>About Me</h2>
+      <div class="about-container">
+        <div class="about-image" data-aos="fade-right">
+          <img
+            src="./images/Profile.jpeg"
+            alt="Sahil Shahare Profile"
+            class="profile-image"
+          />
+        </div>
+        <div class="about-text" data-aos="fade-left">
+          <p>
+            I'm a recently graduated B.Tech CSE student at G. H. Raisoni College
+            of Engineering with a passion for building impactful software
+            solutions. My expertise lies in
+            <strong>Software Development</strong>,
+            <strong>Machine Learning</strong>, and
+            <strong>Full-Stack Web technologies</strong>, including the
+            <strong>MERN</strong> stack. I excel at leveraging languages like
+            <strong>Java</strong> and <strong>Python</strong> to tackle complex
+            problems and deliver efficient applications. I'm seeking a
+            challenging role to apply my technical skills and collaborative
+            approach in a professional setting.
+          </p>
+        </div>
+      </div>
     </section>
 
     <section id="education" data-aos="fade-up">
-      <h2 style="margin: 0 auto">Education</h2>
+      <h2>Education</h2>
       <div style="margin-top: 2.5rem">
         <div class="education-item">
           <h4>B. Tech in Computer Science and Engineering</h4>
@@ -400,22 +583,34 @@
     </section>
 
     <section id="experience" data-aos="fade-up">
-      <h2 style="margin: 0 auto">Experience</h2>
+      <h2>Experience</h2>
       <div style="margin-top: 2.5rem">
-        <div class="education-item">
+        <div class="education-item experience-item">
           <h4>Intern - Front-End Developer</h4>
           <p>Maharashtra Remote Sensing Applications Centre (MRSAC), Nagpur</p>
-          <p style="margin-top: 0.5rem; font-size: 1rem">
-            Gained 6 months of hands-on experience in front-end development,
-            contributing to real-world applications.
-          </p>
           <span class="timeframe">June 2024 – November 2024 (6 Months)</span>
+          <ul style="margin-top: 1rem">
+            <li>
+              Collaborated on a team of 4 to develop a secure data visualization
+              platform, reducing data processing time by <strong>15%</strong>.
+            </li>
+            <li>
+              Engineered and implemented responsive UI components using
+              <strong>React.js</strong> and <strong>Tailwind CSS</strong>,
+              improving user engagement by <strong>10%</strong>.
+            </li>
+            <li>
+              Participated in daily stand-ups and code reviews, contributing to
+              a streamlined development lifecycle and a
+              <strong>20%</strong> reduction in code bugs.
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
     <section id="skills" data-aos="fade-up">
-      <h2 style="margin: 0 auto">Technical Skills</h2>
+      <h2>Technical Skills</h2>
       <div class="skills" style="margin-top: 2.5rem">
         <div class="card">
           <h3>Programming Languages</h3>
@@ -449,7 +644,7 @@
     </section>
 
     <section id="projects" data-aos="fade-up">
-      <h2 style="margin: 0 auto">Key Projects</h2>
+      <h2>Key Projects</h2>
       <div class="projects" style="margin-top: 2.5rem">
         <div class="card">
           <img
@@ -458,24 +653,35 @@
             style="width: 100%; border-radius: 8px; margin-bottom: 1rem"
           />
           <h3>Fake-Vision: ML-Powered Deepfake Detection</h3>
-          <p>
-            A Flask web application using <strong>EfficientNet</strong> for
-            image/video deepfake detection. Features include frame-level
-            analysis, confidence scoring, and secure user handling.
-          </p>
-          <p>
-            <strong>Tech Stack:</strong> Python, Flask, PyTorch, EfficientNet,
-            OpenCV, SQLite, Bootstrap
-          </p>
+          <div class="project-details">
+            <p>
+              <strong>Problem:</strong> The rise of synthetic media makes it
+              difficult to distinguish real content from deepfakes.
+            </p>
+            <p>
+              <strong>Solution:</strong> I developed a Flask web application
+              that uses a pre-trained <strong>EfficientNet</strong> model to
+              analyze video and image frames, providing a confidence score on
+              whether the content is a deepfake.
+            </p>
+            <p>
+              <strong>Tech Stack:</strong> Python, Flask, PyTorch, EfficientNet,
+              OpenCV, SQLite, Bootstrap
+            </p>
+          </div>
           <a
             href="https://github.com/sahil-shahare/Fake-vision-using-Machine-learning-for-deepfake-detection"
             class="btn"
-          >View Github</a
+            target="_blank"
+            rel="noopener noreferrer"
+            >View Github</a
           >
           <a
             href="https://fake-vision-ml-powered-deepfake-detection.onrender.com"
-            class="btn"
-          >Live</a
+            class="btn btn-secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Live</a
           >
         </div>
         <div class="card">
@@ -485,43 +691,80 @@
             style="width: 100%; border-radius: 8px; margin-bottom: 1rem"
           />
           <h3>SIP + SWP Investment Calculator</h3>
-          <p>
-            A web-based financial tool for Systematic Investment Plans (SIP) and
-            Systematic Withdrawal Plans (SWP). Provides dynamic visualizations
-            using <strong>Chart.js</strong> to track investment growth.
-          </p>
-          <p><strong>Tech Stack:</strong> HTML, CSS, JavaScript, Chart.js</p>
+          <div class="project-details">
+            <p>
+              <strong>Problem:</strong> Individuals need a simple, visual tool
+              to plan and track their financial investments without complex
+              software.
+            </p>
+            <p>
+              <strong>Solution:</strong> I built a web-based financial
+              calculator that allows users to model SIP and SWP scenarios. The
+              tool provides dynamic visualizations using
+              <strong>Chart.js</strong>, making complex financial data easy to
+              understand.
+            </p>
+            <p><strong>Tech Stack:</strong> HTML, CSS, JavaScript, Chart.js</p>
+          </div>
           <a
             href="https://github.com/sahil-shahare/Financial-Planning-Calculator"
             class="btn"
-          >View Github</a
+            target="_blank"
+            rel="noopener noreferrer"
+            >View Github</a
           >
           <a
             href="https://financial-planning-calculator.onrender.com"
-            class="btn"
-          >Live</a
+            class="btn btn-secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Live</a
           >
         </div>
       </div>
     </section>
 
     <section id="contact" data-aos="fade-up">
-      <h2 style="margin: 0 auto">Get in Touch</h2>
-      <div class="contact-info" style="margin-top: 2.5rem">
+      <h2>Get in Touch</h2>
+      <div class="contact-content">
         <p>
-          📧 Email:
-          <a href="mailto:sahilshahare380@gmail.com">sahilshahare380@gmail.com</a
-          ><br />
-          📞 Phone: <a href="tel:+919420243539">+91 9420243539</a><br />
-          🔗 LinkedIn:
-          <a href="https://www.linkedin.com/in/sahil-shahare/" target="_blank"
-          >LinkedIn Profile</a
-          ><br />
-          💻 GitHub:
-          <a href="https://github.com/sahil-shahare" target="_blank"
-          >GitHub Profile</a
-          >
+          I'm currently seeking new opportunities and would love to hear from
+          you! Feel free to reach out via email, phone, or connect with me on
+          social media.
         </p>
+        <div class="social-icons" style="margin-top: 1.5rem">
+          <a
+            href="https://www.linkedin.com/in/sahil-shahare/"
+            target="_blank"
+            aria-label="LinkedIn"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a
+            href="https://github.com/sahil-shahare"
+            target="_blank"
+            aria-label="GitHub"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a href="mailto:sahilshahare380@gmail.com" aria-label="Email"
+            ><i class="fas fa-envelope"></i
+          ></a>
+        </div>
+        <form
+          id="contact-form"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+          style="margin-top: 2rem"
+        >
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea
+            name="message"
+            rows="5"
+            placeholder="Your Message"
+            required
+          ></textarea>
+          <button type="submit">Send Message</button>
+        </form>
       </div>
     </section>
 
@@ -565,23 +808,33 @@
       });
 
       // Particle Background
-      particlesJS("particles-js", {
-        particles: {
-          number: { value: 60 },
-          size: { value: 4 },
-          color: { value: "#4db6ac" },
-          line_linked: {
-            enable: true,
-            distance: 150,
-            color: "#4db6ac",
-            opacity: 0.4,
-            width: 1,
+      function updateParticlesColor() {
+        const isDark = document.body.classList.contains("dark");
+        const color = isDark ? "#ffeb3b" : "#ffc107";
+        particlesJS("particles-js", {
+          particles: {
+            number: { value: 60 },
+            size: { value: 4 },
+            color: { value: color },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: color,
+              opacity: 0.4,
+              width: 1,
+            },
           },
-        },
-        interactivity: {
-          events: { onhover: { enable: true, mode: "repulse" } },
-        },
-      });
+          interactivity: {
+            events: { onhover: { enable: true, mode: "repulse" } },
+          },
+        });
+      }
+      // Initial call
+      updateParticlesColor();
+      // Update on theme change
+      document
+        .getElementById("theme-toggle")
+        .addEventListener("click", updateParticlesColor);
 
       // Back to Top Button
       const topBtn = document.getElementById("back-to-top");
@@ -597,7 +850,7 @@
       const navLinks = document.getElementById("nav-links");
       hamburger.addEventListener("click", () => {
         navLinks.classList.toggle("show");
-        const icon = hamburger.querySelector('.hamburger-icon');
+        const icon = hamburger.querySelector(".hamburger-icon");
         icon.textContent = navLinks.classList.contains("show") ? "✖" : "☰";
       });
 
@@ -605,7 +858,9 @@
       document.querySelectorAll(".nav-links a").forEach((link) => {
         link.addEventListener("click", () => {
           navLinks.classList.remove("show");
-          document.getElementById("hamburger").querySelector('.hamburger-icon').textContent = "☰";
+          document
+            .getElementById("hamburger")
+            .querySelector(".hamburger-icon").textContent = "☰";
         });
       });
     </script>
